@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="3"
+        android:rowCount="2">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_row="0"
+            android:layout_columnSpan="3" />
+
+        <EditText
+            android:id="@+id/editText_write"
+            android:layout_width="300dp"
+            android:textColor="@color/black"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="2" />
+
+        <Button
+            android:id="@+id/button_send"
+            android:layout_row="1"
+            android:layout_column="2" />
+
+
+    </GridLayout>
+
+
+</LinearLayout>
