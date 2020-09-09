@@ -15,5 +15,9 @@
     <string name="subtract">-</string>
     <string name="multiply">*</string>
     <string name="equal">=</string>
+    <string name="point">.</string>
+    <string name="zero">0</string>
+    <string name="positive">+/-</string>
+    <string name="divide">/</string>
 
 </resources>
