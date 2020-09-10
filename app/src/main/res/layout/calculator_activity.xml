@@ -136,7 +136,7 @@
             android:id="@+id/result_button"
             android:layout_row="7"
             android:layout_column="3"
-            android:text="@string/one" />
+            android:text="@string/equal" />
 
 
     </GridLayout>
