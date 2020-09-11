@@ -2,9 +2,12 @@ package com.spicytomato.helloworld.cacluate;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,8 +71,26 @@ public class calculator_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator_activity);
 
-        //TODO
-        //小数按钮
+        GridLayout gridLayout = findViewById(R.id.gridlayout);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        int column = gridLayout.getColumnCount();
+        int row = gridLayout.getRowCount();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenWidth = displayMetrics.widthPixels;
+        int screenHeight = displayMetrics.heightPixels;
+
+        for (int i = 0; i < gridLayout.getChildCount(); i++) {
+            if (gridLayout.getChildAt(i).getId() != R.id.result_textview) {
+                Button button = (Button) gridLayout.getChildAt(i);
+                button.setWidth(screenWidth / column);
+                button.setHeight(screenHeight / row);
+            } else {
+                TextView textView = (TextView) gridLayout.getChildAt(i);
+                textView.setWidth(screenWidth / column);
+                textView.setHeight(screenHeight / row);
+            }
+        }
 
 
         mButtonAC = findViewById(R.id.AC_button);
@@ -222,7 +243,7 @@ public class calculator_Activity extends Activity {
                     if (old.charAt(0) == '-') {
                         String newS = (String) old.subSequence(1, mTextViewResult.length());
                         mTextViewResult.setText(newS);
-                    }else {
+                    } else {
                         mTextViewResult.setText("-" + old);
                     }
                     break;
@@ -272,7 +293,7 @@ public class calculator_Activity extends Activity {
                         break;
                     case REMAINDER:
                         mNowCalculate = 6;
-                        mDoubleList.add(0,num);
+                        mDoubleList.add(0, num);
                         mIsClear = true;
                         break;
                     case AC:
@@ -281,6 +302,7 @@ public class calculator_Activity extends Activity {
                         break;
                     case RESULT:
                         getResult(mLastCalculate, mNowCalculate);
+                        mNowCalculate = 0;
                         break;
                     default:
                         break;
@@ -320,8 +342,8 @@ public class calculator_Activity extends Activity {
                         mTextViewResult.setText(bigDecimal3.toString());
                         mDoubleList.clear();
                         mDoubleList.add(0, bigDecimal3);
-                    }else {
-                        Toast.makeText(this,"被除数不能为0",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "被除数不能为0", Toast.LENGTH_LONG).show();
                         mDoubleList.clear();
                         mDoubleList.add(0, num);
                     }
@@ -332,7 +354,7 @@ public class calculator_Activity extends Activity {
                     break;
                 case 5:
                     mDoubleList.clear();
-                    mDoubleList.add(0,new BigDecimal("0"));
+                    mDoubleList.add(0, new BigDecimal("0"));
                     mTextViewResult.setText("0");
                     mIsAC = true;
                     break;
