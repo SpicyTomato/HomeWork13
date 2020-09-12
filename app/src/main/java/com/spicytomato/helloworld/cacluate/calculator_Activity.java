@@ -92,6 +92,8 @@ public class calculator_Activity extends Activity {
             }
         }
 
+        Log.d("TAG", displayMetrics.toString());
+
 
         mButtonAC = findViewById(R.id.AC_button);
 

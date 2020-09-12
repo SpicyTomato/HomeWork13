@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,14 +23,25 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d(TAG, "onCreate: ");
+
         final TextView textView = findViewById(R.id.textView);
         Button button = findViewById(R.id.button);
         Button button1 = findViewById(R.id.button2);
+
+        textView.setVisibility(View.INVISIBLE);
+        button1.setVisibility(View.INVISIBLE);
+        EditText editText = findViewById(R.id.editText);
+        editText.setVisibility(View.INVISIBLE);
+
+        button.setText("登录");
 //
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -104,6 +116,30 @@ public class MainActivity extends AppCompatActivity {
     public void registerForContextMenu(View view) {
         super.registerForContextMenu(view);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
     }
 
     //弹出式窗口

@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.spicytomato.helloworld.R;
 
@@ -23,6 +25,7 @@ public class ViewpagerAdapter extends RecyclerView.Adapter<ViewpagerAdapter.Inne
     ViewpagerAdapter(List<Mess> mMesses){
         this.mMesses = mMesses;
     }
+
 
     @NonNull
     @Override
